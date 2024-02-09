@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Image Analysis Results</h2>
+<div>
+    <!-- Conditional rendering for label -->
+    {% if label %}
+    <p>Label: {{ label }}</p>
+    {% else %}
+    <p>Label not available.</p>
+    {% endif %}
+
+    <!-- Formatting and conditional rendering for confidence -->
+    {% if confidence %}
+    <p>Confidence: {{ confidence|round(2) }}%</p>
+    {% else %}
+    <p>Confidence not available.</p>
+    {% endif %}
+
+    <!-- Optional: Display the analyzed image if you pass its path to the template -->
+    {% if image_path %}
+    <div>
+        <h3>Analysed Image:</h3>
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Analysed Image" style="max-width: 100%; height: auto;">
+    </div>
+    {% endif %}
+    
+    <!-- Link to analyze another image -->
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Analyze Another Image</a>
+    </div>
+</div>
+{% endblock %}

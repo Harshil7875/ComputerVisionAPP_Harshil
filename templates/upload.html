@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="upload-container" id = "drop-area">
+    <h2 class="text-center">Upload an Image</h2>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="custom-file mb-3">
+            <input type="file" name="file" id="imageUpload" class="custom-file-input" required onchange="handleFiles(this.files)">
+            <label class="custom-file-label" for="imageUpload">Choose file...</label>
+        </div>
+        <div id = "gallery" class="image-preview mb-3"> <!-- Ensure there's margin-bottom -->
+            <img id="imagePreview" src="#" alt="Image preview" class="img-fluid">
+        </div>
+        <button type="submit" class="btn btn-upload">Upload Image</button>
+    </form>
+</div>
+{% endblock %}
